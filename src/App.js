@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement, incrementByAmount, selectCount } from './features/counterSlice';
 
 function App() {
+  const count = useSelector(selectCount);
+  const dispatch = useDispatch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold mb-4">Redux Toolkit + Tailwind CSS</h1>
+      <div className="flex items-center space-x-4">
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          onClick={() => dispatch(increment())}
         >
-          Learn React
-        </a>
-      </header>
+          Increment
+        </button>
+        <span className="text-2xl">{count}</span>
+        <button
+          className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+          onClick={() => dispatch(decrement())}
+        >
+          Decrement
+        </button>
+      </div>
+      <div className="mt-4">
+        <button
+          className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+          onClick={() => dispatch(incrementByAmount(5))}
+        >
+          Increment by 5
+        </button>
+      </div>
     </div>
   );
 }
