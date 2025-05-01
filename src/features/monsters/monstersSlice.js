@@ -1,9 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 // Fetch monsters from the D&D 5e API
 export const fetchMonsters = createAsyncThunk(
   'monsters/fetchMonsters',
   async () => {
+    await sleep(500);
     const response = await fetch('https://www.dnd5eapi.co/api/monsters');
     const data = await response.json();
     return data.results; // Return the list of monsters
@@ -14,6 +17,7 @@ export const fetchMonsters = createAsyncThunk(
 export const fetchMonsterByIndex = createAsyncThunk(
   'monsters/fetchMonsterByIndex',
   async (index) => {
+    await sleep(500);
     const response = await fetch(`https://www.dnd5eapi.co/api/monsters/${index}`);
     const data = await response.json();
     return data; // Return the monster's details

@@ -8,7 +8,7 @@ import MonsterDetailPage from './pages/MonsterDetailPage';
 function App() {
   return (
     <Router>
-      <div className="p-4">
+      <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/monsters" element={<MonstersListPage />} />
