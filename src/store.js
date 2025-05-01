@@ -2,7 +2,7 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger'; // Import redux-logger
-import counterReducer from './features/counterSlice';
+import monstersReducer from './features/monsters/monstersSlice';
 
 // Create the logger middleware
 const logger = createLogger({
@@ -12,7 +12,7 @@ const logger = createLogger({
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    monsters: monstersReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(logger), // Add logger to the middleware chain
